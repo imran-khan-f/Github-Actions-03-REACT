@@ -1,0 +1,7 @@
+name: Output
+on: push
+jobs:
+  output:
+    steps:
+      - name: Job Output
+        run: echo "${{toJson(github)}}"
