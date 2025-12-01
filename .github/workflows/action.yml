@@ -1,0 +1,45 @@
+name: Practice module for REACT
+on: push
+jobs:
+  lint:
+    runs-on: Ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v6
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependency
+        run: npm install
+      - name: run lint
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: Ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v6
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependency
+        run: npm install
+      - name: run test
+        run: npm test
+  deploy:
+    needs: test
+    runs-on: Ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v6
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependency
+        run: npm run build
+      - name: code Deploy
+        run: echo "Code Deploying.."      
+    
