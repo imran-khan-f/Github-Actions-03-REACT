@@ -2,6 +2,9 @@ name: Output
 on: push
 jobs:
   output:
+    runs-on: Ubuntu-latest
     steps:
+      - name: Get Code
+        uses: actions/checkout@v6
       - name: Job Output
         run: echo "${{toJson(github)}}"
